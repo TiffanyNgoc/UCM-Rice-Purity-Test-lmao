@@ -1,0 +1,97 @@
+body {
+    font-family: Georgia, serif;
+    background-color: #f8ecc2;
+    color: #000;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-image: url('background.png');
+}
+
+.container {
+    width: 50%;
+    margin: auto;
+    background-color: #fcf5e3;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    border-radius: 10px;
+    border: 2px solid #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.official {
+    text-decoration: line-through;
+    color: red;
+    font-weight: bold;
+}
+
+.caution {
+    color: red;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.score {
+    font-size: 40px;
+    font-weight: bold;
+    color: red;
+    margin-top: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+    font-size: 18px;
+    display: inline-block;
+    text-align: left;
+    width: 100%;
+}
+
+li {
+    margin: 10px 0;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #d32f2f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #b71c1c;
+}
+
+#scoreResult {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+a {
+    color: blue;
+    font-weight: bold;
+    text-decoration: underline;
+}

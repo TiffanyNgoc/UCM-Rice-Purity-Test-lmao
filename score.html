@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your UC Merced Purity Score</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>The <span class="official">Official</span> UC Merced Purity Test</h1>
+        <h2>Your Score:</h2>
+        <p id="finalScore" class="score">100</p>
+        <p>Thank you for your submission!</p>
+        <p>The UC Merced Purity Test was created to track student experiences at UC Merced.</p>
+        <p>Managed by the <strong>UC Merced Community</strong></p>
+        <a href="index.html">Take the test again</a>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const params = new URLSearchParams(window.location.search);
+            const score = params.get("score");
+            if (score) {
+                document.getElementById("finalScore").textContent = score;
+            }
+        });
+    </script>
+</body>
+</html>

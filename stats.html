@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UC Merced Purity Test Stats</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>UC Merced Purity Test Statistics</h1>
+        <canvas id="statsChart"></canvas>
+        <a href="index.html">Back to Test</a>
+    </div>
+
+    <script>
+        async function loadStats() {
+            let questionCounts = {};
+            const snapshot = await db.collection("purityTestResponses").get();
+            snapshot.forEach(doc => {
+                let selected = doc.data().selectedQuestions;
+                if (selected) {
+                    selected.forEach(num => {
+                        questionCounts[num] = (questionCounts[num] || 0) + 1;
+                    });
+                }
+            });
+
+            let sortedQuestions = Object.entries(questionCounts)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 10);
+
+            let labels = sortedQuestions.map(q => `Q${q[0]}`);
+            let data = sortedQuestions.map(q => q[1]);
+
+            new Chart(document.getElementById("statsChart"), {
+                type: "bar",
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: "Number of Times Checked",
+                        data: data,
+                        backgroundColor: "rgba(54, 162, 235, 0.6)",
+                        borderColor: "rgba(54, 162, 235, 1)",
+                        borderWidth: 1
+                    }]
+                },
+                options: { responsive: true, scales: { y: { beginAtZero: true } } }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", loadStats);
+    </script>
+</body>
+</html>
